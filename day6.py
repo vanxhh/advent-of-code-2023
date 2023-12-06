@@ -52,5 +52,5 @@ def part2(input):
 
     print(last - first + 1)
 
-
+part1(input)
 part2(input)
