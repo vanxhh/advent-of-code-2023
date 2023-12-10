@@ -1,7 +1,6 @@
 from collections import defaultdict
 from math import gcd
 
-# sourcery skip: avoid-builtin-shadow
 with open("input.txt", "r") as f:
     input = f.read()
 
@@ -19,7 +18,7 @@ def sol1():
     print(steps)
 
 
-def sol2():  # sourcery skip: avoid-builtin-shadow
+def sol2():
     cycles = []
 
     starts = [
@@ -32,20 +31,13 @@ def sol2():  # sourcery skip: avoid-builtin-shadow
         curr_instructions = instructions
 
         count = 0
-        first_z_found = None
 
-        while True:
-            while position[-1] != "Z":
-                count += 1
-                position = maps[position][0 if curr_instructions[0] == "L" else 1]
-                curr_instructions = curr_instructions[1:] + curr_instructions[0]
+        while position[-1] != "Z":
+            count += 1
+            position = maps[position][0 if curr_instructions[0] == "L" else 1]
+            curr_instructions = curr_instructions[1:] + curr_instructions[0]
 
-            if first_z_found is None:
-                first_z_found = position
-                cycles.append(count)
-                count = 0
-            elif position == first_z_found:
-                break
+        cycles.append(count)
 
     part2 = cycles.pop()
 
@@ -61,5 +53,5 @@ maps = defaultdict(tuple)
 for line in lines.splitlines():
     maps[line.split(" = ")[0]] = tuple(line.split(" = ")[1][1:-1].split(", "))
 
-sol1()
+# sol1()
 sol2()
