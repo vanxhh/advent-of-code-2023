@@ -41,8 +41,7 @@ def part2():
     answer = 0
     for box_index, box in enumerate(boxes):
         for lens_index, lens in enumerate(box):
-            temp = (box_index + 1) * (lens_index + 1) * focal_lengths[lens]
-            answer += temp
+            answer += (box_index + 1) * (lens_index + 1) * focal_lengths[lens]
     print(answer)
 
 
